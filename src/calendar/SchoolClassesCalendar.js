@@ -97,13 +97,15 @@ async function createWeekSchedule() {
     return upcomingWeekSchedule;
 }
 
+
+
 export const classDefaults = {
-    'A': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: true },
-    'B': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: true },
-    'C': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: true },
-    'D': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: true },
-    'E': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: true },
-    'F': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: true },
+    'A': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: undefined },
+    'B': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: undefined },
+    'C': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: undefined },
+    'D': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: undefined },
+    'E': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: undefined },
+    'F': { name: '', color: '#FFBC00', isHumanities: false, isFirstLunch: undefined },
 
     'FLEX': { block: 'Humflex', name: '', color: '#4080FF', duration: 25 },
     'House Meetings': { block: 'House Meetings', name: '', color: '#4080FF', duration: 25 },
@@ -176,18 +178,23 @@ export async function calculateScheduleForDay(day) {
             }
         }
 
-
-        if(isAFirstLunchBlock){
-            if(isFirstLunch){
-                blockName = "Lunch";
-                blockColor = userPreferences['Lunch']?.color || classDefaults['Lunch'].color;
-            }
-        }else if(isASecondLunchBlock) {
-            if(!isFirstLunch){
-                blockName = "Lunch";
-                blockColor = userPreferences['Lunch']?.color || classDefaults['Lunch'].color;
+        if (isFirstLunch == undefined) {
+            
+        } else {
+            if(isAFirstLunchBlock){
+                if(isFirstLunch){
+                    blockName = "Lunch";
+                    blockColor = userPreferences['Lunch']?.color || classDefaults['Lunch'].color;
+                }
+            }else if(isASecondLunchBlock) {
+                if(!isFirstLunch){
+                    blockName = "Lunch";
+                    blockColor = userPreferences['Lunch']?.color || classDefaults['Lunch'].color;
+                }
             }
         }
+
+        
 
 
         return {
