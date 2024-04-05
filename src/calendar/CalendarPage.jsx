@@ -360,7 +360,7 @@ const CalendarPage = () => {
                                         <input className={'checkbox'} type="checkbox" name="isHumanities" checked={editorIsHumanities} onChange={(e) => {setEditorIsHumanities(e.target.checked)}} />
                                     </div>
                                     <div className={'editor-checkbox'}>
-                                        <label htmlFor="isFirstLunch">First Lunch</label>
+                                        <label htmlFor="isFirstLunch">Happens in the Second Lunch</label>
                                         <input className={'checkbox'} type="checkbox" name="isFirstLunch" checked={editorIsFirstLunch} onChange={(e) => {setEditorIsFirstLunch(e.target.checked)}} />
                                     </div>
                                 </div>
